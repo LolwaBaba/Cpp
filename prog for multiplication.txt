@@ -1,0 +1,4 @@
+% Define the multiplication predicate
+multiplication(_, 0, 0).
+multiplication(X, 1, X).
+multiplication(X, Y, Result) :- Y > 1, Y1 is Y - 1, multiplication(X, Y1, Result1), Result is Result1 + X.

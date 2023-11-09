@@ -1,0 +1,9 @@
+Prelude> :{
+Prelude      fact :: Integer> Integer
+Prelude       fact n | n == 0 = 1
+Prelude              | n /= 0 = n * fact (n-1)
+Prelude          main = do
+Prelude          putStrLn "The factorial of 5 is:"
+Prelude          print (fact 5)
+Prelude :}
+Prelude> fact 5

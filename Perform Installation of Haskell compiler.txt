@@ -1,0 +1,2 @@
+installation  ~$ sudo apt install haskell-platform -y
+

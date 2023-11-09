@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+class APSIT {
+public:
+    long moodle_id;
+    void set_moodleid(long m) {
+        moodle_id = m;
+        cout << "Moodle ID: " << moodle_id << endl;
+    }
+};
+
+class Student_Personal : public APSIT {
+private:
+    char Name[100];
+    char gender;
+    char Address[100];
+
+public:
+    void getdata(long x) {
+        set_moodleid(x);
+        cout << "Enter Student Personal Details, Name, Gender, Address" << endl;
+        cin >> Name >> gender >> Address;
+    }
+
+    void display() {
+        cout << "Student's Name: " << Name << endl;
+        cout << "Student's Gender: " << gender << endl;
+        cout << "Student's Address: " << Address << endl;
+    }
+};
+
+class Student_Academic : public APSIT {
+public:
+    int Sub1;
+    int Sub2;
+    int Sub3;
+
+    void getmarks() {
+        cout << "Enter 3 Subjects Marks: " << endl;
+        cin >> Sub1 >> Sub2 >> Sub3;
+    }
+
+    void displaymarks() {
+        cout << "Marks are:\n" << Sub1 << endl << Sub2 << endl << Sub3 << endl;
+    }
+
+    void Average() {
+        float avg = (static_cast<float>(Sub1 + Sub2 + Sub3) / 3.0);
+        cout << "Average of Marks are: " << avg << endl;
+    }
+};
+
+class Student : public Student_Personal, public Student_Academic {
+private:
+    int total1;
+    float Avg;
+
+public:
+    void Total() {
+        total1 = Student_Academic::Sub1 + Student_Academic::Sub2 + Student_Academic::Sub3;
+        cout << "Total of Marks are: " << total1 << endl;
+    }
+};
+
+int main() {
+    Student S1;
+    long m = 22104025;
+    S1.getdata(m);
+    S1.display();
+    S1.getmarks();
+    S1.displaymarks();
+    S1.Average();
+    S1.Total();
+    return 0;
+}

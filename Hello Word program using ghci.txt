@@ -1,0 +1,9 @@
+main = putStrLn "Hello world"
+compilation
+ghc -o filename filename.hs
+ghc -o demo demo.hs
+Execution
+./filename
+./demo
+Description:
+putStrLn :function to print on screen

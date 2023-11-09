@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+class Animals {
+public:
+    Animals() {
+        cout << "This is an animal" << endl;
+    }
+};
+
+class Mammals : public Animals {
+public:
+    Mammals() {
+        cout << "This is a mammal" << endl;
+    }
+};
+
+class Herbivores {
+public:
+    Herbivores() {
+        cout << "This is a herbivore" << endl;
+    }
+};
+
+class Cow : public Mammals, public Herbivores {
+public:
+    Cow() {
+        cout << "A cow is a herbivore mammal" << endl;
+    }
+};
+
+int main() {
+    Cow c;
+    return 0;
+}

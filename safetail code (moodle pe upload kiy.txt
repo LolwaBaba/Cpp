@@ -1,0 +1,20 @@
+safetail code (moodle pe upload kiya hai )
+
+
+
+let numbers = [4, 8, 15, 16, 23, 42]
+
+Prelude> tail (tail numbers)
+
+Prelude> tail (tail (tail (tail (tail (tail numbers)))))
+
+Prelude> 1:5:[]
+
+Prelude> 99:tail numbers
+
+Prelude> safetail xs = if null xs then [] else tail xs
+
+Prelude> safetail []
+
+Prelude> tail [1,2,3,4,5]
+// prelude> tail[]

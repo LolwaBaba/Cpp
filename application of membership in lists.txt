@@ -1,0 +1,7 @@
+onTheGuestList(Name, [Name|_RestOfTheList]).
+onTheGuestList(Name, [_FirstPerson|RestOfTheList]) :- onTheGuestList(Name, RestOfTheList).
+
+
+
+op query 
+onTheGuestList(andy,[ kaushiki, andy,  rohan, rohil, ahana]).
