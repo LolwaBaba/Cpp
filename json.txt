@@ -1,0 +1,957 @@
+experiment no 1 
+
+
+// To Implement a program in C++  to demonstrate concepts like – Encapsulation, Initialization and Finalization
+
+this code is for encapsulation 
+
+
+
+ #include <iostream>
+using namespace std;
+class Room {
+   private:
+    double length;
+    double breadth;
+    double height;
+   public:
+    // function to initialize private variables
+    void initData(double len, double brth, double hgt) {
+        length = len;
+        breadth = brth;
+        height = hgt;
+    }
+
+    double calculateArea() {
+        return length * breadth;
+    }
+
+    double calculateVolume() {
+        return length * breadth * height;
+    }
+};
+
+int main() {
+
+    // create object of Room class
+    Room room1;
+
+    // pass the values of private variables as arguments
+    room1.initData(42.5, 30.8, 19.2);
+
+    cout << "Area of Room =  " << room1.calculateArea() << endl;
+    cout << "Volume of Room =  " << room1.calculateVolume() << endl;
+
+    return 0;
+}
+
+
+
+Example : C++ Parameterized Constructor
+// C++ program to calculate the area of a wall
+
+
+#include <iostream>
+using namespace std;
+
+class Wall {
+  private:
+    double length;
+    double height;
+  public:
+    Wall(double len, double hgt) : length(len), height(hgt) {
+      // Constructor initialization list to initialize variables
+    }
+
+    double calculateArea() {
+      return length * height;
+    }
+};
+
+int main() {
+  Wall wall1(10.5, 8.6);
+  Wall wall2(8.5, 6.3);
+
+  cout << "Area of Wall 1: " << wall1.calculateArea() << endl;
+  cout << "Area of Wall 2: " << wall2.calculateArea();
+
+  return 0;
+}
+
+
+
+
+exp no 2
+Aim : To Implement a program in C++ and Java to demonstrate concepts like Dynamic Binding
+
+code 1 
+#include <iostream>
+using namespace std;
+class Base
+{
+    public:
+   virtual void show()
+    {
+        cout<<" In Base \n";
+    }
+};
+class Derived : public Base
+{
+    public:
+    void show()
+    {
+        cout << "Derived class is derived from the base class." ;
+    }
+};
+int main()
+{
+    Base *bptr;
+    //Base b;
+    Derived d;
+    bptr = &d;
+    bptr->show();
+    return 0;
+}
+
+
+code 2
+
+#include <iostream>
+using namespace std;
+class A
+{
+   public:
+   int x=5;
+    public:
+    virtual void display()
+    {
+        cout << "Value of x is : " << x<<endl;
+    }
+};
+class B: public A
+{
+    int y = 10;
+    public:
+    void display()
+    {
+       cout << "Value of y is : " <<y<<endl;
+    }
+};
+int main()
+{
+    A *a;
+    B b;
+    a = &b;
+   a->display();
+    return 0;
+}
+
+
+exp3
+Aim :  To Implement a program in C++ and Java to demonstrate concepts like  Inheritance.
+
+code 1 
+Single Inheritance
+#include <iostream>
+using namespace std;
+ class Animal {
+ public:
+ void eat() {
+ cout<<"Eating..."<<endl;
+ }
+ };
+ class Dog: public Animal
+ {
+ public:
+ void bark(){
+ cout<<"Barking...";
+ }
+ };
+int main(void) {
+ Dog d1;
+ d1.eat();
+ d1.bark();
+ return 0;
+}
+
+
+code 2 
+Multilevel Inheritance
+#include <iostream>
+using namespace std;
+ class Animal {
+ public:
+
+ void eat() {
+ cout<<"Eating..."<<endl;
+ }
+ };
+ class Dog: public Animal
+ {
+ public:
+ void bark(){
+ cout<<"Barking..."<<endl;
+ }
+ };
+ class BabyDog: public Dog
+ {
+ public:
+ void weep() {
+ cout<<"Weeping...";
+ }
+ };
+int main(void) {
+ BabyDog d1;
+ d1.eat();
+ d1.bark();
+ d1.weep();
+ return 0;
+}
+
+
+code 3
+Multiple Inheritance
+#include <iostream>
+using namespace std;
+// create add class
+class add
+{
+ public:
+ int x = 20;
+ int y = 30;
+ void sum()
+ {
+ cout << " The sum of " << x << " and " << y << " is " <<x+y << endl;
+ }
+
+};
+
+// create Mul class
+class Mul
+{
+ public:
+ int a = 20;
+ int b = 30;
+ void mul()
+ {
+ cout << " The Multiplication of " << a << " and " << b << " is " <<a*b << endl;
+ }
+};
+
+// create Subclass
+class Sub
+{
+ public:
+ int a = 50;
+ int b = 30;
+ void sub()
+ {
+ cout << " The Subtraction of " << a << " and " << b << " is " <<a-b << endl;
+ }
+};
+
+// create Div class
+class Div
+{
+ // access specifier
+ public:
+ int a = 150;
+ int b = 30;
+ void div()
+ {
+ cout << " The Division of " << a << " and " << b << " is " <<a/b << endl;
+ }
+};
+
+// create a derived class to derive the member functions of all base classes
+class derived: public add, public Div, public Sub, public Mul
+{
+ // access specifier
+ public:
+ int p = 12;
+ int q = 5;
+ void mod()
+ {
+ cout << "The Modulus of " << p << " and " <<q << " is " << p % q << endl;
+ }
+};
+
+int main ()
+{
+ // create an object of the derived class
+ derived dr;
+ dr.mod(); // call derive class member function
+ // call all member function of class add, Div, Sub and Mul
+ dr.sum();
+ dr.mul();
+ dr.div();
+ dr.sub();
+} 
+
+
+code 4
+Hybrid Inheritance:
+
+#include <iostream>
+using namespace std;
+
+class APSIT {
+public:
+    long moodle_id;
+    void set_moodleid(long m) {
+        moodle_id = m;
+        cout << "Moodle ID: " << moodle_id << endl;
+    }
+};
+
+class Student_Personal : public APSIT {
+private:
+    char Name[100];
+    char gender;
+    char Address[100];
+
+public:
+    void getdata(long x) {
+        set_moodleid(x);
+        cout << "Enter Student Personal Details, Name, Gender, Address" << endl;
+        cin >> Name >> gender >> Address;
+    }
+
+    void display() {
+        cout << "Student's Name: " << Name << endl;
+        cout << "Student's Gender: " << gender << endl;
+        cout << "Student's Address: " << Address << endl;
+    }
+};
+
+class Student_Academic : public APSIT {
+public:
+    int Sub1;
+    int Sub2;
+    int Sub3;
+
+    void getmarks() {
+        cout << "Enter 3 Subjects Marks: " << endl;
+        cin >> Sub1 >> Sub2 >> Sub3;
+    }
+
+    void displaymarks() {
+        cout << "Marks are:\n" << Sub1 << endl << Sub2 << endl << Sub3 << endl;
+    }
+
+    void Average() {
+        float avg = (static_cast<float>(Sub1 + Sub2 + Sub3) / 3.0);
+        cout << "Average of Marks are: " << avg << endl;
+    }
+};
+
+class Student : public Student_Personal, public Student_Academic {
+private:
+    int total1;
+    float Avg;
+
+public:
+    void Total() {
+        total1 = Student_Academic::Sub1 + Student_Academic::Sub2 + Student_Academic::Sub3;
+        cout << "Total of Marks are: " << total1 << endl;
+    }
+};
+
+int main() {
+    Student S1;
+    long m = 22104025;
+    S1.getdata(m);
+    S1.display();
+    S1.getmarks();
+    S1.displaymarks();
+    S1.Average();
+    S1.Total();
+    return 0;
+}
+
+herbivores code 
+
+#include <iostream>
+using namespace std;
+
+class Animals {
+public:
+    Animals() {
+        cout << "This is an animal" << endl;
+    }
+};
+
+class Mammals : public Animals {
+public:
+    Mammals() {
+        cout << "This is a mammal" << endl;
+    }
+};
+
+class Herbivores {
+public:
+    Herbivores() {
+        cout << "This is a herbivore" << endl;
+    }
+};
+
+class Cow : public Mammals, public Herbivores {
+public:
+    Cow() {
+        cout << "A cow is a herbivore mammal" << endl;
+    }
+};
+
+int main() {
+    Cow c;
+    return 0;
+}
+
+
+
+expno 4 
+Aim :  To Implement a program in C++ and JAVA to understand Exception handling and Garbage collection with the syntactic differences between the two languages 
+
+code 1 exception handling in c++
+
+
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+int main() {
+    int a = 10, b = 0, c;
+    try {
+        if (b == 0) {
+            throw runtime_error("divide by zero is an error");
+            c = a / b;
+        }
+    }
+    catch (const runtime_error &error) {
+        cout << "exception occurred: " << error.what() << endl;
+    }
+    catch (...) {
+        cout << "some exception occurred" << endl;
+    }
+
+    return 0;
+}
+
+
+
+code 2 Exception handling in JAVA-
+
+Exception handling using try-catch-
+
+
+public class JavaExceptionExample {
+    public static void main(String args[]) {
+        try {
+            // code that may raise exception
+            int data = 100 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("An arithmetic exception occurred: " + e.getMessage());
+        }
+        // rest of the code of the program
+        System.out.println("Rest of the code...");
+    }
+}
+
+
+code 3  ◼	Use of multiple catch blocks :
+
+public class MultipleCatchBlock1 {
+    public static void main(String[] args) {
+        try {
+            int a[] = new int[5];
+            a[5] = 30 / 0;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndexOutOfBoundsException occurs");
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception occurs");
+        } catch (Exception e) {
+            System.out.println("Parent Exception occurs");
+        }
+        System.out.println("Rest of the code");
+    }
+}
+
+
+code 4 ◼	Use of finally keyword :
+
+class TestFinallyBlock {    
+  public static void main(String args[]) {    
+    try {    
+      // Code that does not throw any exception  
+      int data = 25 / 5;    
+      System.out.println(data);    
+    } catch (NullPointerException e) {  
+      System.out.println(e);  
+    } finally {  
+      System.out.println("finally block is always executed");  
+    }    
+    System.out.println("rest of the code...");    
+  }
+}
+
+
+
+exp 5 
+
+ Aim : Perform Installation of Haskell compiler. Perform simple exercise on operators, types etc to
+
+
+installation  ~$ sudo apt install haskell-platform -y
+
+
+run our first Hello Word program using ghci
+Code:
+main = putStrLn "Hello world"
+compilation
+ghc -o filename filename.hs
+ghc -o demo demo.hs
+Execution
+./filename
+./demo
+Description:
+putStrLn :function to print on screen
+
+
+code 2 b) Using the ghci compiler perform addition and subtraction operation
+
+> :{
+Prelude| add :: Integer -> Integer -> Integer --function declaration
+Prelude| add x y = x + y --function definition
+Prelude|
+Prelude| main = do
+Prelude| putStrLn "The addition of the two numbers is:"
+Prelude| print(add 2 5) --calling a function
+Prelude| :}
+Prelude> add 2 3
+5
+
+
+code 3
+c)Determine the type of each of the following expressions using : type keyword 
+
+Prelude> pi
+ 3.141592653589793
+ Prelude> :type pi
+ pi :: Floating a => a
+ Prelude> "abc"++"xyz"
+ "abcxyz"
+ Prelude> :type "abc"++"xyz"
+"abc"++"xyz" :: [Char]
+Prelude> :type (True, False)
+(True, False) :: (Bool, Bool)
+Prelude> :type (True, False, 'a')
+(True, False, 'a') :: (Bool, Bool, Char)
+
+
+
+expno 6
+aim : To implement your own functions in Haskell, understanding delimiters & whitespaces,and three types of function definition using (a) a conditional expression; (b) guarded equations; (c) pattern matching
+
+code 1
+safetail code (moodle pe upload kiya hai )
+
+
+
+let numbers = [4, 8, 15, 16, 23, 42]
+
+Prelude> tail (tail numbers)
+
+Prelude> tail (tail (tail (tail (tail (tail numbers)))))
+
+Prelude> 1:5:[]
+
+Prelude> 99:tail numbers
+
+Prelude> safetail xs = if null xs then [] else tail xs
+
+Prelude> safetail []
+
+Prelude> tail [1,2,3,4,5]
+// prelude> tail[]
+
+
+exp 7
+aim : To implement your own functions in Haskell, understanding delimiters & whitespaces,and three types of function definition using (a) a conditional expression; (b) guarded equations; (c) pattern matching
+
+
+code 1 a conditional expression 
+
+
+main = do
+ let var = 23
+ if var `rem` 2 == 0
+ then putStrLn "Number is Even"
+ else putStrLn "Number is Odd"
+
+
+
+code 2 guarded equations
+
+
+Prelude> :{
+Prelude      fact :: Integer> Integer
+Prelude       fact n | n == 0 = 1
+Prelude              | n /= 0 = n * fact (n-1)
+Prelude          main = do
+Prelude          putStrLn "The factorial of 5 is:"
+Prelude          print (fact 5)
+Prelude :}
+Prelude> fact 5
+
+
+
+code 3  pattern matching
+
+
+fact :: Int -> Int
+fact 0 = 1
+fact n = n * fact (n - 1)
+
+
+main = do
+    putStrLn "The factorial of 5 is:"
+    print (fact 5)
+  :}
+    op fact 6
+720
+
+
+
+
+
+exp 8
+
+Aim: To implement multiplication of two natural numbers using recursion and the function add,
+define a function that multiplies two natural numbers
+
+
+
+code 1 prog for multiplication 
+Prelude> :{
+Prelude| mult _ 0 = 0
+Prelude| mult n m = ( mult n (m-1)) + n
+Prelude| :}
+Prelude> mult 2 3
+6
+
+
+
+code 2 prog for addition
+
+Prelude> :{
+Prelude| addition x 0 = x
+Prelude| addition x y = (1 + addition x (y-1))
+Prelude| :}
+Prelude> addition 1 3
+4
+
+
+exp 11  (11 and 9 ki jagah inetrchange ki hai bas)
+
+Aim: Implement a program to represent list in prolog
+
+
+
+Create a list containing all integers within a given range.
+Example: of qop query
+?-range(4,9,L).
+L = [4,5,6,7,8,9
+  
+code 
+
+range(I,I,[I]).
+range(I,K,[I|L]) :- I < K, I1 is I + 1, range(I1,K,L).
+
+b) Implement a predicate named enumerate: This predicate should take a list as the first argument, and return
+an integer number as the second argument, representing the length of the list, or the number of items it
+contains.
+ Examples: (a) enumerate([john],R). Should return R = 1
+
+
+code 
+size([],0).
+size([_|T],N) :- size(T,N1), N is N1+1.
+
+op query is this
+size([1,2,3,4,5,6,7],N)
+
+ans n=7 ayega
+
+
+c) Design an application of membership in lists: You’re working as a bouncer at a nightclub, and you want
+to write a predicate which will let us know whether someone should be allowed in or not, based on whether
+their name is on the guest list. If their name is on the list, then they should be permitted to enter. Otherwise,
+they will have to wait outside. 
+
+
+
+code 
+onTheGuestList(Name, [Name|_RestOfTheList]).
+onTheGuestList(Name, [_FirstPerson|RestOfTheList]) :- onTheGuestList(Name, RestOfTheList).
+
+
+
+op query 
+onTheGuestList(andy,[ kaushiki, andy,  rohan, rohil, ahana]).
+
+
+
+d) Implement append method on list using recursion.
+
+
+op query 
+
+
+append1([1,2,3,4],[12,13,14,15,16],L3)
+
+
+code 
+
+append1([],L2,L2).
+append1([H|T],L2,[H|L3]) :- append1(T,L2,L3).
+
+
+
+exp 10
+
+
+
+Aim: To implement addition of two numbers using SWI Prolog . Implement a Prolog
+predicate max(X,Y,Z,M) that says that M is the maximum of the three input numbers X, Y,
+and Z. Use only ">" to compare numbers.
+
+
+
+only 1 code multiple queries runn kro language prolog 
+
+use swiprolog online cmpiler - swish 
+code
+
+max(X,Y,Z,M):-X>Y,X>Z,M is X.
+max(X,Y,Z,M):-X<Y,Y>Z,M is Y.
+max(X,Y,Z,M):-Z>Y,X<Z,M is Z.
+max(X,Y,Z,M):-X=Y,X<Z,M is Z.
+max(X,Y,Z,M):-X<Y,X=Z,M is Y.
+max(X,Y,Z,M):-Y=Z,X>Y,M is X.
+max(X,Y,Z,M):-X=Y,X>Z,M is X.
+max(X,Y,Z,M):-X=Z,Y<Z,M is Z.
+max(X,Y,Z,M):-Y=Z,X<Z,M is Z.
+max(X,Y,Z,M):-X=Y,X=Z,M is X
+
+
+
+
+
+in op write theses queries 
+
+max(10,25,13,25)
+
+ans will be true
+
+
+max(5,10,15,10)
+ans will be false 
+
+
+
+
+exp 9
+
+Aim: Implement the Fibonacci sequence 0, 1, 1, 2, 3, 5, 8, 13, 21,34, using a list comprehension
+
+
+
+program:
+[x*2| x<-[1..10]]
+[2,4,6,8,10,12,14,16,18,20]
+Dependant Generators
+(x,y)| x<-[1..4],y<-[2..5]]
+[(1,2),(1,3),(1,4),(1,5),(2,2),(2,3),(2,4),(2,5),(3,2),(3,3),(3,4),(3,5),(4,2),(4,3),(4,4),(4,5)]
+Guards List comprehensions
+[x*2 | x<- [1..10], x*2 >=12 ]
+[12,14,16,18,20]
+Zip function
+zip['a','b','c'][1,2,3,4]
+[('a',1),('b',2),('c',3)]
+take 10 [1..20]
+[1,2,3,4,5,6,7,8,9,10]
+ 
+take 10 (iterate (2*)1)
+[1,2,4,8,16,32,64,128,256,512]
+take 10 (iterate (\x ->(x+3)*2)1)
+[1,8,22,50,106,218,442,890,1786,3578]
+take 4 (repeat 3)
+[3,3,3,3]
+Prelude> replicate 3 5
+[5,5,5]
+
+Prelude> take 10 (cycle [1,2,3])
+[1,2,3,1,2,3,1,2,3,1]
+Fibonacci Sequence
+let fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+Prelude> take 10 fibs
+[0,1,1,2,3,5,8,13,21,34]
+  
+
+Fibonacci Sequence
+let fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+Prelude> take 10 fibs
+[0,1,1,2,3,5,8,13,21,34]
+
+
+exp9  is --------others +++
+
+
+
+exp12 
+
+Aim: Implement Recursion in prolog by taking Tower of Hanoi problem.
+
+only one  code 
+
+
+move(1,X,Y,_) :-
+ write('Move top disk from '),
+ write(X),
+ write(' to '),
+ write(Y),
+ nl.
+move(N,X,Y,Z) :-
+ N>1,
+ M is N-1,
+ move(M,X,Z,Y),
+ move(1,X,Y,_),
+ move(M,Z,Y,X).
+
+
+ans op query will be 
+
+
+move(3,left,right,centre)
+
+
+
+
+exp13
+
+Aim: Implement a program defining family relations using Prolog. Objectives: To understand a declarative approach to problem-solving using the family tree as the use case scenario. v Prerequisites: It is required that students should have basic knowledge of prolog program components basics, Rules, Facts, Query, and basics of database manipulations Software used: SWI prolog version 8.2.2 Problem Statement: Implement a program defining family relations using Prolog
+
+
+
+only one code multiple query running
+
+
+code 
+
+
+%knowledge
+basemale(ali).
+male(jack).
+male(oliver).
+male(james).
+male(simon).
+male(harry).
+female(helen).
+female(sophie).
+female(jess).
+female(lily).
+parent_of(jack,jess).
+parent_of(jack,lily).
+parent_of(helen, jess).
+parent_of(helen, lily).
+parent_of(oliver,james).
+parent_of(sophie, james).
+parent_of(jess, simon).
+parent_of(ali, simon).
+parent_of(lily, harry).
+parent_of(james, harry).
+% Rules
+father_of(X,Y):-
+male(X),parent_of(X,Y).
+mother_of(X,Y):-
+female(X),parent_of(X,Y).
+grandfather_of(X,Y):-
+male(X),parent_of(X,Z),
+parent_of(Z,Y).
+grandmother_of(X,Y):-female(X),
+parent_of(X,Z),
+parent_of(Z,Y).
+ancestor_of(X,Y):- parent_of(X,Y).
+ancestor_of(X,Y):- parent_of(X,Z),
+ancestor_of(Z,Y).
+
+
+
+op running queries
+
+1)mother_of(helen,jess)
+
+father_of
+
+grandfather_of ---- (x,lily),   (jack,x)
+grandmother_of
+
+
+
+exp 14
+Aim: To implement a program in JAVA to demonstrate Thread management and synchronization.
+
+
+
+class RunnableDemo implements Runnable {
+ private Thread t; //OBJECT OF THREAD
+ private String threadName; // STRING VARIABLE FOR THREADNAME
+
+ RunnableDemo( String name) // CONSTRUCTOR
+ {
+ threadName = name;
+ System.out.println("Creating " + threadName );
+ }
+
+ public void run() {
+ System.out.println("Running " + threadName );
+ try {
+ for(int i = 4; i > 0; i--) {
+ System.out.println("Thread: " + threadName + ", " + i);
+ // Let the thread sleep for a while.
+ Thread.sleep(50);
+ }
+ } catch (InterruptedException e) {
+ System.out.println("Thread " + threadName + " interrupted.");
+ }
+ System.out.println("Thread " + threadName + " exiting.");
+ }
+
+ public void start () {
+ System.out.println("Starting " + threadName );
+ if (t == null) {
+ t = new Thread (this, threadName);
+ t.start ();
+ }
+ }
+}
+public class TestThread {
+ public static void main(String args[]) {
+RunnableDemo R1 = new RunnableDemo( "Thread-1"); // OBJ OF RUNNABLEDEMO CLASS
+ R1.start();
+
+ RunnableDemo R2 = new RunnableDemo( "Thread-2");
+ R2.start();
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
